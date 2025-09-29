@@ -13,27 +13,32 @@ def read_data(filename):
     Returns:
         list: le contenu du fichier (1 list par ligne)
     """
-    l = []
+    with open(filename, mode='r') as f :
+        l = []
+        csv = f.readlines()
+        for line in csv :
+            nombres = [int(n) for n in line.strip().split(';')]
+            l.append(nombres)
+    f.close()
     return l
 
 def get_list_k(data, k):
-    l = []
-    return l
+    return data[k]
 
 def get_first(l):
-    return None
+    return l[0]
 
 def get_last(l):
-    return None
+    return l[-1]
 
 def get_max(l):
-    return None
+    return max(l)
 
 def get_min(l):
-    return None
+    return min(l)
 
 def get_sum(l):
-    return None
+    return sum(l)
 
 
 #### Fonction principale
@@ -41,11 +46,12 @@ def get_sum(l):
 
 def main():
     pass
-    # data = read_data(FILENAME)
-    # for i, l in enumerate(data):
-    #     print(i, l)
-    # k = 37
-    # print(k, get_list_k(data, 37))
+    data = read_data(FILENAME)
+    print(data)
+    #for i, l in enumerate(data):
+        #print(i, l)
+    #k = 37
+    #print(k, get_list_k(data, 37))
 
 
 if __name__ == "__main__":
